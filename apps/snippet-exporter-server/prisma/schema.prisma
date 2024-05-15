@@ -1,0 +1,41 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ImageConfig {
+  backgroundColor String?
+  createdAt       DateTime @default(now())
+  height          Int?
+  id              String   @id @default(cuid())
+  updatedAt       DateTime @updatedAt
+  width           Int?
+}
+
+model Snippet {
+  code      String?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  language  String?
+  updatedAt DateTime @updatedAt
+}
+
+model ColorConfig {
+  createdAt       DateTime @default(now())
+  id              String   @id @default(cuid())
+  syntaxHighlight Json?
+  textColor       String?
+  updatedAt       DateTime @updatedAt
+}
+
+model FontConfig {
+  createdAt  DateTime @default(now())
+  fontFamily String?
+  fontSize   Int?
+  id         String   @id @default(cuid())
+  updatedAt  DateTime @updatedAt
+}
